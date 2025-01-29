@@ -1,9 +1,5 @@
-<!--
-/******************************************************************************
-*	Program Author: Dr. Yongming Tang for CSCI 6810 Java and the Internet *
-*	Date: September, 2012						      *
-*******************************************************************************/
--->
+
+
 
 <%@ page import="java.io.*" %>
 <%@ page import="java.util.*" %>
