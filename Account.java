@@ -64,11 +64,11 @@ public class Account
 		{
 		    if (done)
 		    {
-		        DBConnection ToDB = new DBConnection(); //Have a connection to the DB
+		        DBConnection ToDB = new DBConnection(); 
 		        Connection DBConn = ToDB.openConn();
 		        Statement Stmt = DBConn.createStatement();
 		        String SQL_Command = "SELECT Name FROM Account WHERE Username ='"+Username+ "'AND Password ='"+Password+"'"; 
-		        ResultSet Rslt = Stmt.executeQuery(SQL_Command); //Inquire if the username and password exsits.
+		        ResultSet Rslt = Stmt.executeQuery(SQL_Command);
 		        done = done && Rslt.next();
 		        if (done)
 		        {
@@ -114,7 +114,7 @@ public class Account
                     done=true;
 				}
 		}
-	    catch(java.sql.SQLException e)		//5
+	    catch(java.sql.SQLException e)		
 	    {         done = false;
 				 System.out.println("SQLException: " + e);
 				 while (e != null)
