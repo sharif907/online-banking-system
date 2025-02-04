@@ -1,7 +1,7 @@
 
 package com.mishra;
 
-import java.lang.*; //including Java packages used by this program
+import java.lang.*; 
 import java.sql.*;
 import com.mishra.*;
 
@@ -25,14 +25,14 @@ public class Account
 		boolean done = !Username.equals("") && !Password.equals("") && !Password1.equals("") && Password.equals(Password1);
 		try {
 		    if (done) {
-		        DBConnection ToDB = new DBConnection(); //Have a connection to the DB
+		        DBConnection ToDB = new DBConnection(); 
 		        Connection DBConn = ToDB.openConn();
 		        Statement Stmt = DBConn.createStatement();
-		        String SQL_Command = "SELECT Username FROM Account WHERE Username ='"+Username+"'"; //SQL query command
-		        ResultSet Rslt = Stmt.executeQuery(SQL_Command); //Inquire if the username exsits.
+		        String SQL_Command = "SELECT Username FROM Account WHERE Username ='"+Username+"'"; 
+		        ResultSet Rslt = Stmt.executeQuery(SQL_Command); 
 		        done = done && !Rslt.next();
 		        if (done) {
-				    SQL_Command = "INSERT INTO Account(Username, Password, Name) VALUES ('"+Username+ "','"+Password+"','"+Name+"')"; //Save the username, password and Name
+				    SQL_Command = "INSERT INTO Account(Username, Password, Name) VALUES ('"+Username+ "','"+Password+"','"+Name+"')"; 
 				    Stmt.executeUpdate(SQL_Command);
 			    }
 			    Stmt.close();
@@ -67,7 +67,7 @@ public class Account
 		        DBConnection ToDB = new DBConnection(); //Have a connection to the DB
 		        Connection DBConn = ToDB.openConn();
 		        Statement Stmt = DBConn.createStatement();
-		        String SQL_Command = "SELECT Name FROM Account WHERE Username ='"+Username+ "'AND Password ='"+Password+"'"; //SQL query command
+		        String SQL_Command = "SELECT Name FROM Account WHERE Username ='"+Username+ "'AND Password ='"+Password+"'"; 
 		        ResultSet Rslt = Stmt.executeQuery(SQL_Command); //Inquire if the username and password exsits.
 		        done = done && Rslt.next();
 		        if (done)
@@ -104,10 +104,10 @@ public class Account
 		        DBConnection ToDB = new DBConnection(); //Have a connection to the DB
 		        Connection DBConn = ToDB.openConn();
 		        Statement Stmt = DBConn.createStatement();
-		        String SQL_Command = "SELECT * FROM Account WHERE Username ='"+Username+ "'AND Password ='"+Password+"'"; //SQL query command
-		        ResultSet Rslt = Stmt.executeQuery(SQL_Command); //Inquire if the username exsits.
+		        String SQL_Command = "SELECT * FROM Account WHERE Username ='"+Username+ "'AND Password ='"+Password+"'"; 
+		        ResultSet Rslt = Stmt.executeQuery(SQL_Command); 
 		        if (Rslt.next()) {
-				    SQL_Command = "UPDATE Account SET Password='"+NewPassword+"' WHERE Username ='"+Username+"'"; //Save the username, password and Name
+				    SQL_Command = "UPDATE Account SET Password='"+NewPassword+"' WHERE Username ='"+Username+"'"; 
 				    Stmt.executeUpdate(SQL_Command);
 			        Stmt.close();
 			        ToDB.closeConn();
