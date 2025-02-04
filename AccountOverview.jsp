@@ -7,11 +7,11 @@
 <%
 String UName = new String("");
 	UName = request.getParameter( "UserID" );
-	//out.println("Your username is " + UName);
+	
 			
 	String Name = new String("");
 	Name = request.getParameter("CustomerName");
-	//out.println("Your customername is " + Name);
+	
 	
 	
 	CheckingAccount ca;
