@@ -1,16 +1,16 @@
 
 package com.mishra;
 
-import java.lang.*; //including Java packages used by this program
+import java.lang.*; 
 import java.sql.*;
 import com.mishra.*;
 
 public class CheckingAccount
-{   //Instance Variables
+{   
 	private String CheckingAccountNumber, CustomerName, CustomerID;
 	private float Balance = -1, Amount = -1;
 
-		public CheckingAccount(String CA_Num, String Cust_Name, String Cust_ID, String Amt) { //Constructor One with three parameters
+		public CheckingAccount(String CA_Num, String Cust_Name, String Cust_ID, String Amt) { 
 		CheckingAccountNumber = CA_Num;
 		CustomerName = Cust_Name;
 		CustomerID = Cust_ID;
@@ -20,10 +20,10 @@ public class CheckingAccount
 
 
 
-	public CheckingAccount(String CA_Num) { //Constructor Two with one parameter
+	public CheckingAccount(String CA_Num) { 
 		CheckingAccountNumber = CA_Num;
 	}
-	public CheckingAccount() { //Constructor with no parameters for fetching the account no.
+	public CheckingAccount() { 
 		}
 
 
@@ -31,11 +31,11 @@ public class CheckingAccount
 	     boolean done = false;
 				try {
 				    if (!done) {
-				        DBConnection ToDB = new DBConnection(); //Have a connection to the DB
+				        DBConnection ToDB = new DBConnection(); 
 				        Connection DBConn = ToDB.openConn();
 				        Statement Stmt = DBConn.createStatement();
-				        String SQL_Command = "SELECT CheckingAccountNumber FROM CheckingAccount WHERE CheckingAccountNumber ='"+CheckingAccountNumber+"'"; //SQL query command
-				        ResultSet Rslt = Stmt.executeQuery(SQL_Command); //Inquire if the username exsits.
+				        String SQL_Command = "SELECT CheckingAccountNumber FROM CheckingAccount WHERE CheckingAccountNumber ='"+CheckingAccountNumber+"'"; 
+				        ResultSet Rslt = Stmt.executeQuery(SQL_Command); 
 				        done = !Rslt.next();
 				        if (done) {
 						    SQL_Command = "INSERT INTO CheckingAccount(CheckingAccountNumber, CustomerName, Balance, CustomerID)"+
@@ -64,7 +64,7 @@ public class CheckingAccount
 			    }
 	    return done;
 	}
-	public String getAccno(String C_ID) {  //Method to return a CheckingAccount No.
+	public String getAccno(String C_ID) {  
 			try {
 			        DBConnection ToDB = new DBConnection(); //Have a connection to the DB
 			        Connection DBConn = ToDB.openConn();
@@ -92,12 +92,12 @@ public class CheckingAccount
 		    }
 		    return CheckingAccountNumber;
 	}
-    public float getBalance() {  //Method to return a CheckingAccount balance
+    public float getBalance() {  
 		try {
-		        DBConnection ToDB = new DBConnection(); //Have a connection to the DB
+		        DBConnection ToDB = new DBConnection(); 
 		        Connection DBConn = ToDB.openConn();
 		        Statement Stmt = DBConn.createStatement();
-		        String SQL_Command = "SELECT Balance FROM CheckingAccount WHERE CheckingAccountNumber ='"+CheckingAccountNumber+"'"; //SQL query command for Balance
+		        String SQL_Command = "SELECT Balance FROM CheckingAccount WHERE CheckingAccountNumber ='"+CheckingAccountNumber+"'";
 		        ResultSet Rslt = Stmt.executeQuery(SQL_Command);
 
 		        while (Rslt.next()) {
@@ -125,12 +125,12 @@ public class CheckingAccount
 	    return Balance;
 	}
 
-    public float getBalance(String ChkAcctNumber) {  //Method to return a CheckingAccount balance
+    public float getBalance(String ChkAcctNumber) { 
 		try {
-		        DBConnection ToDB = new DBConnection(); //Have a connection to the DB
+		        DBConnection ToDB = new DBConnection(); 
 		        Connection DBConn = ToDB.openConn();
 		        Statement Stmt = DBConn.createStatement();
-		        String SQL_Command = "SELECT Balance FROM CheckingAccount WHERE CheckingAccountNumber ='"+ChkAcctNumber+"'"; //SQL query command for Balance
+		        String SQL_Command = "SELECT Balance FROM CheckingAccount WHERE CheckingAccountNumber ='"+ChkAcctNumber+"'"; 
 		        ResultSet Rslt = Stmt.executeQuery(SQL_Command);
 
 		        while (Rslt.next()) {
