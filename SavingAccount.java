@@ -1,23 +1,23 @@
 
 package com.mishra;
 
-import java.lang.*; //including Java packages used by this program
+import java.lang.*;
 import java.sql.*;
 import com.mishra.*;
 
 public class SavingAccount
-{   //Instance Variables
+{   
 	private String SavingAccountNumber, CustomerName, CustomerID;
 	private float Balance = -1, Amount = -1;
 
-	public SavingAccount(String SA_Num, String Cust_Name, String Cust_ID, String Amt) { //Constructor One with three parameters
+	public SavingAccount(String SA_Num, String Cust_Name, String Cust_ID, String Amt) { 
 		SavingAccountNumber = SA_Num;
 		CustomerName = Cust_Name;
 		CustomerID = Cust_ID;
 		Amount = Float.parseFloat(Amt);
 	}
 
-	public SavingAccount(String SA_Num) { //Constructor Two with one parameter
+	public SavingAccount(String SA_Num) {
 		SavingAccountNumber = SA_Num;
 	}
 	public SavingAccount(){
@@ -26,15 +26,15 @@ public class SavingAccount
 	     boolean done = false;
 				try {
 				    if (!done) {
-				        DBConnection ToDB = new DBConnection(); //Have a connection to the DB
+				        DBConnection ToDB = new DBConnection(); 
 				        Connection DBConn = ToDB.openConn();
 				        Statement Stmt = DBConn.createStatement();
-				        String SQL_Command = "SELECT SavingAccountNumber FROM SavingAccount WHERE SavingAccountNumber ='"+SavingAccountNumber+"'"; //SQL query command
-				        ResultSet Rslt = Stmt.executeQuery(SQL_Command); //Inquire if the username exsits.
+				        String SQL_Command = "SELECT SavingAccountNumber FROM SavingAccount WHERE SavingAccountNumber ='"+SavingAccountNumber+"'"; 
+				        ResultSet Rslt = Stmt.executeQuery(SQL_Command); 
 				        done = !Rslt.next();
 				        if (done) {
 						    SQL_Command = "INSERT INTO SavingAccount(SavingAccountNumber, CustomerName, Balance, CustomerID)"+
-						                  " VALUES ('"+SavingAccountNumber+"','"+CustomerName+"','"+Amount+"', '"+CustomerID+"')"; //Save the username, password and Name
+						                  " VALUES ('"+SavingAccountNumber+"','"+CustomerName+"','"+Amount+"', '"+CustomerID+"')";
 						    Stmt.executeUpdate(SQL_Command);
 					    }
 					    Stmt.close();
@@ -59,7 +59,7 @@ public class SavingAccount
 			    }
 	    return done;
 	}
-	public String getAccno(String C_ID) {  //Method to return a SavingAccount No.
+	public String getAccno(String C_ID) {  
 				try {
 				        DBConnection ToDB = new DBConnection(); //Have a connection to the DB
 				        Connection DBConn = ToDB.openConn();
@@ -87,12 +87,12 @@ public class SavingAccount
 			    }
 			    return SavingAccountNumber;
 	}
-    public float getBalance() {  //Method to return a SavingAccount balance
+    public float getBalance() {  
 		try {
 		        DBConnection ToDB = new DBConnection(); //Have a connection to the DB
 		        Connection DBConn = ToDB.openConn();
 		        Statement Stmt = DBConn.createStatement();
-		        String SQL_Command = "SELECT Balance FROM SavingAccount WHERE SavingAccountNumber ='"+SavingAccountNumber+"'"; //SQL query command for Balance
+		        String SQL_Command = "SELECT Balance FROM SavingAccount WHERE SavingAccountNumber ='"+SavingAccountNumber+"'"; 
 		        ResultSet Rslt = Stmt.executeQuery(SQL_Command);
 
 		        while (Rslt.next()) {
@@ -120,12 +120,12 @@ public class SavingAccount
 	    return Balance;
 	}
 
-    public float getBalance(String SaveAcctNumber) {  //Method to return a SavingAccount balance
+    public float getBalance(String SaveAcctNumber) { 
 		try {
-		        DBConnection ToDB = new DBConnection(); //Have a connection to the DB
+		        DBConnection ToDB = new DBConnection(); 
 		        Connection DBConn = ToDB.openConn();
 		        Statement Stmt = DBConn.createStatement();
-		        String SQL_Command = "SELECT Balance FROM SavingAccount WHERE SavingAccountNumber ='"+SaveAcctNumber+"'"; //SQL query command for Balance
+		        String SQL_Command = "SELECT Balance FROM SavingAccount WHERE SavingAccountNumber ='"+SaveAcctNumber+"'";
 		        ResultSet Rslt = Stmt.executeQuery(SQL_Command);
 
 		        while (Rslt.next()) {
