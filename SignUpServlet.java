@@ -1,17 +1,17 @@
 
 
 import java.io.*;
-import javax.servlet.*;  //package for GenericServlet
-import javax.servlet.http.*;  //package for HttpServlet
+import javax.servlet.*; 
+import javax.servlet.http.*;  
 import java.util.*;
-//import Course.Java.ProSample.*;
+
 import com.mishra.*;
 
 public class SignUpServlet extends HttpServlet {
    private String Username, Password, Re_enterPassword, CustomerName;
    private PrintWriter output;
 
-   //a method called automatically to initialize the servlet
+  
    public void init( ServletConfig config )
       throws ServletException
    {
@@ -23,27 +23,23 @@ public class SignUpServlet extends HttpServlet {
 
    }
 
-   //a method included in class HttpServlet to respond
-   //to post requests from a client.
+ 
    public void doGet ( HttpServletRequest req, HttpServletResponse res )
       throws ServletException, IOException
    {	doPost(req, res);
    }
 
-   //a method included in class HttpServlet to respond
-   //to post requests from a client.
+  
    public void doPost ( HttpServletRequest req, HttpServletResponse res )
       throws ServletException, IOException
    {
-      //obtains a character-based output stream that enables
-      //text data to be sent to the client
+     
       output = res.getWriter();
 
-      //specifies the MIME type of the response to the browser
+     
       res.setContentType( "text/html" );
 
-      //returns the value associated with a parameter sent to
-      //the servlet as part of a post request
+    
       Username = req.getParameter( "UsernameField" );
       Password = req.getParameter( "PasswordField" );
       Re_enterPassword = req.getParameter( "RePasswordField" );
