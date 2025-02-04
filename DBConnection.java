@@ -11,7 +11,7 @@ public class DBConnection {
     private String URL;
 
     public DBConnection() {
-        //URL = "jdbc:odbc:JavaClass";
+        
         URL ="jdbc:sqlserver://127.0.0.1:1433;databaseName=JavaClass;integratedSecurity=true;";//"user=tang;password=;
         connection = null;
 
@@ -19,10 +19,10 @@ public class DBConnection {
 
     public Connection openConn() {
         try {
-            //Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+            
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(URL);
-            //connection = DriverManager.getConnection(URL, "tang", "xxxxxx");
+            
         }
         catch ( Exception e ) {
             e.printStackTrace();
