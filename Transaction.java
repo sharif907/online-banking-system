@@ -1,7 +1,7 @@
 
 package com.mishra;
 
-import java.lang.*; //including Java packages used by this program
+import java.lang.*; 
 import java.sql.*;
 import java.util.Random;
 import java.time.format.DateTimeFormatter;
@@ -12,7 +12,7 @@ import java.util.*;
 import com.mishra.*;
 
 public class Transaction
-{   //Instance Variables
+{  
 	private String TransactionNumber, TransactionType, TransactionTime, TransactionDate, FromAccount, ToAccount, CustomerID;
 	private float Amount = -1;
 	private String Startdate, Enddate;
@@ -26,8 +26,7 @@ public class Transaction
 		Amount = Float.parseFloat(Amt);
 }
 
-	public Transaction(String ToAcc, String FromAcc, String Cust_ID, String Amt, String Trans_type) { //Constructor One with four parameters
-		ToAccount = ToAcc;
+	public Transaction(String ToAcc, String FromAcc, String Cust_ID, String Amt, String Trans_type) {
 		FromAccount = FromAcc;
 		CustomerID = Cust_ID;
 		TransactionType = Trans_type;
@@ -44,7 +43,7 @@ public class Transaction
 			     boolean done = true;
 						try {
 						    if (done) {
-						        DBConnection ToDB = new DBConnection(); //Have a connection to the DB
+						        DBConnection ToDB = new DBConnection();
 						        Connection DBConn = ToDB.openConn();
 						        Statement Stmt = DBConn.createStatement();
 						        String SQL_Command;
@@ -52,8 +51,8 @@ public class Transaction
 									Random rand = new Random();
 									int n = rand.nextInt(9999) + 1000;
 									TransactionNumber = Integer.toString(n);
-						        	SQL_Command = "SELECT TransactionNumber FROM Transactions WHERE TransactionNumber ='"+TransactionNumber+"'"; //SQL query command
-						        	ResultSet Rslt = Stmt.executeQuery(SQL_Command); //Inquire if the username exsits.
+						        	SQL_Command = "SELECT TransactionNumber FROM Transactions WHERE TransactionNumber ='"+TransactionNumber+"'"; 
+						        	ResultSet Rslt = Stmt.executeQuery(SQL_Command); 
 						        	done = Rslt.next();
 								}
 						        if (!done) {
@@ -65,7 +64,7 @@ public class Transaction
 									TransactionDate = nowDate.format(formatterDate);
 									//TransactionType = "Deposit";
 								    SQL_Command = "INSERT INTO Transactions(TransactionNumber, TransactionType, TransactionAmount, TransactionTime, TransactionDate, FromAccount, ToAccount, CustomerID)"+
-								                  " VALUES ('"+TransactionNumber+"','"+TransactionType+"','"+Amount+"','"+TransactionTime+"', '"+TransactionDate+"', '"+FromAccount+"', '"+ToAccount+"', '"+CustomerID+"')"; //Save the username, password and Name
+								                  " VALUES ('"+TransactionNumber+"','"+TransactionType+"','"+Amount+"','"+TransactionTime+"', '"+TransactionDate+"', '"+FromAccount+"', '"+ToAccount+"', '"+CustomerID+"')"; 
 								    Stmt.executeUpdate(SQL_Command);
 							    }
 							    Stmt.close();
@@ -95,10 +94,10 @@ public class Transaction
 
 						try {
 							done = !Startdate.equals("") && !Enddate.equals("");
-					        DBConnection ToDB = new DBConnection(); //Have a connection to the DB
+					        DBConnection ToDB = new DBConnection(); 
 					        Connection DBConn = ToDB.openConn();
 					        Statement Stmt = DBConn.createStatement();
-					        String SQL_Command = "SELECT * FROM Transactions WHERE TransactionDate BETWEEN '"+Startdate+ "' AND '"+Enddate+ "'"; //SQL query command
+					        String SQL_Command = "SELECT * FROM Transactions WHERE TransactionDate BETWEEN '"+Startdate+ "' AND '"+Enddate+ "'"; 
 					        ResultSet Rslt = Stmt.executeQuery(SQL_Command);
 					        while (Rslt.next()) {
 								Vector Column_Names = new Vector();
